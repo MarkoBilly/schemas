@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "required": [
+    "label",
+    "title",
+    "background",
+    "cards",
+    "caption"
+  ],
+  "properties": {
+    "label": {
+      "type": "string",
+      "label": "Label Text",
+      "maxLength": 500,
+      "minLength": 0
+    },
+    "title": {
+      "type": "string",
+      "label": "Title Text",
+      "maxLength": 500,
+      "minLength": 0
+    },
+    "background": {
+      "type": "oneOf",
+      "label": "The composition background",
+      "values": [
+        "white",
+        "gradient"
+      ]
+    },
+    "cards": {
+      "type": "array",
+      "label": "List of Cards",
+      "items": [
+        {
+          "type": "object",
+          "required": [
+            "title",
+            "subtitle",
+            "description"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "label": "Title Text",
+              "maxLength": 500,
+              "minLength": 0
+            },
+            "subtitle": {
+              "type": "richtext",
+              "label": "Sub Title Text",
+              "maxLength": 500,
+              "minLength": 0
+            },
+            "description": {
+              "type": "richtext",
+              "label": "Description Text",
+              "maxLength": 500,
+              "minLength": 0
+            }
+          }
+        }
+      ],
+      "maxItems": 100,
+      "minItems": 0
+    },
+    "caption": {
+      "type": "richtext",
+      "label": "Caption Text",
+      "maxLength": 500,
+      "minLength": 0
+    }
+  }
+}
