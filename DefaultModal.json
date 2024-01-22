@@ -1,0 +1,78 @@
+{
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "type": "object",
+  "properties": {
+    "modalId": {
+      "type": "string",
+      "label": "The modal ID for reference",
+      "maxLength": 500,
+      "minLength": 3
+    },
+    "position": {
+      "type": "oneOf",
+      "label": "Modal position on the page",
+      "values": [
+        "topCenter",
+        "center",
+        "bottomCenter"
+      ]
+    },
+    "noBottomBorderRadius": {
+      "type": "boolean",
+      "label": "no border radius for the modal on mobile?"
+    },
+    "header": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "label": "The modal heading",
+          "maxLength": 500,
+          "minLength": 3
+        }
+      }
+    },
+    "footerButton": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "label": "The button label",
+          "maxLength": 200,
+          "minLength": 3
+        },
+        "url": {
+          "type": "string",
+          "label": "The button redirect URL",
+          "maxLength": 1500,
+          "minLength": 3,
+          "format": "uri",
+          "pattern": "^https?:\/\/.*$"
+        }
+      },
+      "required": [
+        "text"
+      ]
+    },
+    "image": {
+      "type": "string",
+      "label": "image",
+      "format": "uri",
+      "pattern": "^https?:\/\/.*$",
+      "maxLength": 1500,
+      "minLength": 3
+    },
+    "text": {
+      "type": "richtext",
+      "label": "description",
+      "maxLength": 1500,
+      "minLength": 3
+    }
+  },
+  "required": [
+    "header",
+    "footerButton",
+    "image",
+    "text"
+  ]
+}

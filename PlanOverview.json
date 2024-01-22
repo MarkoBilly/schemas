@@ -1,0 +1,147 @@
+{
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "label": "label",
+      "maxLength": 500,
+      "minLength": 3
+    },
+    "title": {
+      "type": "string",
+      "label": "title",
+      "maxLength": 1500,
+      "minLength": 3
+    },
+    "description": {
+      "type": "richtext",
+      "label": "description",
+      "maxLength": 5000,
+      "minLength": 3
+    },
+    "showTitleOnTop": {
+      "type": "boolean",
+      "label": "show title on top?"
+    },
+    "showIcon": {
+      "type": "boolean",
+      "label": "show the plus icon"
+    },
+    "planCards": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "label": "plan cards",
+          "properties": {
+            "title": {
+              "type": "string",
+              "label": "card title",
+              "maxLength": 1500,
+              "minLength": 3
+            },
+            "subTitle": {
+              "type": "richtext",
+              "label": "card subtitle",
+              "maxLength": 5000,
+              "minLength": 3
+            },
+            "desktopCardImage": {
+              "type": "string",
+              "label": "desktop card image url",
+              "format": "uri",
+              "pattern": "^https?:\/\/.*$",
+              "maxLength": 1500,
+              "minLength": 3
+            },
+            "mobileCardImage": {
+              "type": "string",
+              "label": "mobile card image url",
+              "format": "uri",
+              "pattern": "^https?:\/\/.*$",
+              "maxLength": 1500,
+              "minLength": 3
+            },
+            "showIcon": {
+              "type": "boolean",
+              "label": "show the plus icon"
+            },
+            "link": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "label": "button link text",
+                  "maxLength": 200,
+                  "minLength": 3
+                },
+                "onClick": {
+                  "type": "object",
+                  "required": [],
+                  "properties": {
+                    "choice": {
+                      "type": "oneOf",
+                      "label": "What should the button do?",
+                      "values": [
+                        "modal",
+                        "redirect",
+                        "scroll"
+                      ]
+                    },
+                    "reference": {
+                      "type": "string",
+                      "label": "What does the link do? (modal id, url for button if set to redirect)",
+                      "maxLength": 500,
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "title",
+            "desktopCardImage",
+            "mobileCardImage"
+          ],
+          "maxItems": 2,
+          "minItems": 1
+        }
+      ]
+    },
+    "content": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "label": "accordion content",
+          "properties": {
+            "title": {
+              "type": "string",
+              "label": " title",
+              "maxLength": 1500,
+              "minLength": 3
+            },
+            "description": {
+              "type": "string",
+              "label": " description",
+              "maxLength": 5000,
+              "minLength": 3
+            }
+          },
+          "required": [
+            "title"
+          ],
+          "maxItems": 10,
+          "minItems": 1
+        }
+      ]
+    }
+  },
+  "required": [
+    "title",
+    "planCards",
+    "content"
+  ]
+}
