@@ -1,0 +1,191 @@
+{
+  "type": "object",
+  "$schema": "http:\\\\\/\\\\\/json-schema.org\\\\\/draft-04\\\\\/schema#",
+  "required": [
+    "title",
+    "illustrations"
+  ],
+  "properties": {
+    "label": {
+      "type": "string",
+      "label": "The label above the title",
+      "maxLength": 200,
+      "minLength": 3
+    },
+    "title": {
+      "type": "string",
+      "label": "The composition title",
+      "maxLength": 500,
+      "minLength": 3
+    },
+    "illustrations": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "label": "Cards",
+          "required": [
+            "title",
+            "description",
+            "image"
+          ],
+          "properties": {
+            "image": {
+              "type": "string",
+              "label": "Card image",
+              "format": "uri",
+              "pattern": "^https?:\\\\\/\\\\\/.*$",
+              "maxLength": 1500,
+              "minLength": 3
+            },
+            "title": {
+              "type": "string",
+              "label": "Card title",
+              "maxLength": 500,
+              "minLength": 3
+            },
+            "description": {
+              "type": "richtext",
+              "label": "Card description",
+              "maxLength": 5000,
+              "minLength": 3
+            },
+            "link": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "label": "The link text",
+                  "maxLength": 200,
+                  "minLength": 3
+                },
+                "onClick": {
+                  "type": "object",
+                  "required": [],
+                  "properties": {
+                    "choice": {
+                      "type": "oneOf",
+                      "label": "What should the button do?",
+                      "values": [
+                        "modal",
+                        "redirect",
+                        "scroll"
+                      ]
+                    },
+                    "reference": {
+                      "type": "string",
+                      "label": "What does the link do? (modal id, url for button if set to redirect)",
+                      "maxLength": 500,
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "maxItems": 3,
+      "minItems": 1
+    },
+    "variant": {
+      "type": "oneOf",
+      "label": "variant type",
+      "values": [
+        "default",
+        "noPadding",
+        "fullImage"
+      ]
+    },
+    "showSlider": {
+      "type": "boolean",
+      "label": "Show Slider"
+    },
+    "cardBackground": {
+      "type": "oneOf",
+      "label": "card's background color",
+      "values": [
+        "white",
+        "lightGreen",
+        "neutral"
+      ]
+    },
+    "button": {
+      "type": "object",
+      "label": "Primary Button",
+      "required": [],
+      "properties": {
+        "text": {
+          "type": "string",
+          "label": "Button text",
+          "maxLength": 50,
+          "minLength": 2
+        },
+        "onClick": {
+          "type": "object",
+          "label": "Button details",
+          "required": [],
+          "properties": {
+            "choice": {
+              "type": "oneOf",
+              "label": "What should the button do?",
+              "values": [
+                "modal",
+                "redirect",
+                "scroll"
+              ]
+            },
+            "metadata": {
+              "type": "string",
+              "label": "Please add some metadata",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "reference": {
+              "type": "string",
+              "label": "What should be the button reference?",
+              "maxLength": 5000,
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "medicalName": {
+      "type": "string",
+      "label": "The doctor name",
+      "maxLength": 200,
+      "minLength": 3
+    },
+    "medicalImage": {
+      "type": "oneOf",
+      "label": "The doctor photo - choose doctor",
+      "values": [
+        "bonnie",
+        "earimAlt",
+        "earim",
+        "eve",
+        "gabriel",
+        "hackett",
+        "hanan",
+        "liam",
+        "madeleine",
+        "mohammed",
+        "noor",
+        "rana",
+        "rob",
+        "soheb",
+        "stephen",
+        "wong"
+      ]
+    },
+    "showImageOnTop": {
+      "type": "boolean",
+      "label": "show image on top"
+    },
+    "backgroundColor": {
+      "type": "boolean",
+      "label": "background color"
+    }
+  }
+}
