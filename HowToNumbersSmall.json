@@ -1,0 +1,51 @@
+{
+  "$schema": "http:\\\/\\\/json-schema.org\\\/draft-04\\\/schema#",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "label": "Label",
+      "maxLength": 200,
+      "minLength": 3
+    },
+    "title": {
+      "type": "string",
+      "label": "Title",
+      "maxLength": 1500,
+      "minLength": 3
+    },
+    "pods": {
+      "type": "array",
+      "label": "Pods List",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "label": "Title",
+              "maxLength": 1500,
+              "minLength": 3
+            },
+            "description": {
+              "type": "richtext",
+              "label": "description",
+              "maxLength": 5000,
+              "minLength": 3
+            }
+          },
+          "required": [
+            "title",
+            "description"
+          ]
+        }
+      ],
+      "maxItems": 3,
+      "minItems": 1
+    }
+  },
+  "required": [
+    "title",
+    "pods"
+  ]
+}
