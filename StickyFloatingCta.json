@@ -1,0 +1,77 @@
+{
+  "type": "object",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "required": [
+    "description",
+    "button",
+    "scrollTrigger"
+  ],
+  "properties": {
+    "button": {
+      "type": "object",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "onClick": {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "choice": {
+              "type": "oneOf",
+              "label": "What should the button do?",
+              "values": [
+                "modal",
+                "redirect",
+                "scroll",
+                "loginForkedRedirect"
+              ]
+            },
+            "reference": {
+              "type": "string",
+              "label": "What does the link do? (modal id, url for button if set to redirect)",
+              "maxLength": 500,
+              "minLength": 1
+            }
+          }
+        },
+        "text": {
+          "type": "string",
+          "label": "Button Text",
+          "maxLength": 200,
+          "minLength": 0
+        }
+      }
+    },
+    "scrollTrigger": {
+      "type": "number",
+      "label": "Amount of page scroll to trigger composition - represented as percentage of the total page height",
+      "maximum": 10000,
+      "minimum": 0
+    },
+    "description": {
+      "type": "richtext",
+      "label": "Main Description",
+      "maxLength": 5000,
+      "minLength": 0
+    },
+    "mobileDescription": {
+      "type": "richtext",
+      "label": "Description for mobile. If not set, it will use the value from Main Description",
+      "maxLength": 5000,
+      "minLength": 0
+    },
+    "subDescription": {
+      "type": "richtext",
+      "label": "Additional description (shown under Main Description)",
+      "maximum": 5000,
+      "minimum": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "label": "Image URL",
+      "maxLength": 500,
+      "minLength": 0
+    }
+  }
+}
