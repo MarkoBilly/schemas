@@ -49,6 +49,10 @@
       "maximum": 10000,
       "minimum": 0
     },
+    "mobileButtonFullWidth": {
+      "type": "boolean",
+      "label": "Should the button be full width on mobile? (this will hide all descriptions on mobile)"
+    },
     "description": {
       "type": "richtext",
       "label": "Main Description",
