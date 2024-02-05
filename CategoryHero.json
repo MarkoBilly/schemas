@@ -1,0 +1,309 @@
+{
+  "type": "object",
+  "$schema": "http:\\\\\/\\\\\/json-schema.org\\\\\/draft-04\\\\\/schema#",
+  "required": [
+    "title",
+    "subtitle",
+    "primaryButton"
+  ],
+  "properties": {
+    "badge": {
+      "type": "oneOf",
+      "label": "Badge type",
+      "values": [
+        "money-back-new",
+        "money-back-180",
+        "money-back-generic",
+        "anvisa",
+        "voyMBG"
+      ],
+      "default": "money-back-new"
+    },
+    "badgePosition": {
+      "type": "oneOf",
+      "label": "Badge position",
+      "values": [
+        "topRight",
+        "bottomRight"
+      ],
+      "default": "topRight"
+    },
+    "label": {
+      "type": "string",
+      "label": "The label",
+      "maxLength": 200,
+      "minLength": 0
+    },
+    "title": {
+      "type": "string",
+      "label": "The title",
+      "maxLength": 500,
+      "minLength": 5
+    },
+    "hasText": {
+      "type": "boolean",
+      "label": "Show the subtitle"
+    },
+    "subtitle": {
+      "type": "richtext",
+      "label": "The subtitle",
+      "maxLength": 1500,
+      "minLength": 0
+    },
+    "heroImages": {
+      "type": "object",
+      "label": "Hero Images NEW",
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "label": "Mobile image URL",
+          "format": "uri",
+          "pattern": "^https?:\\\\\/\\\\\/.*$",
+          "maxLength": 1500,
+          "minLength": 0
+        },
+        "desktop": {
+          "type": "string",
+          "label": "Desktop image URL",
+          "format": "uri",
+          "pattern": "^https?:\\\\\/\\\\\/.*$",
+          "maxLength": 1500,
+          "minLength": 0
+        }
+      },
+      "required": []
+    },
+    "image": {
+      "type": "object",
+      "label": "Hero images",
+      "properties": {
+        "mobileImage": {
+          "type": "string",
+          "label": "Mobile image URL",
+          "format": "uri",
+          "pattern": "^https?:\\\\\/\\\\\/.*$",
+          "maxLength": 1500,
+          "minLength": 0
+        },
+        "desktopImage": {
+          "type": "string",
+          "label": "Desktop image URL",
+          "format": "uri",
+          "pattern": "^https?:\\\\\/\\\\\/.*$",
+          "maxLength": 1500,
+          "minLength": 0
+        },
+        "mobileFullBleed": {
+          "type": "string",
+          "label": "Mobile fullbleed image URL",
+          "format": "uri",
+          "pattern": "^https?:\\\\\/\\\\\/.*$",
+          "maxLength": 1500,
+          "minLength": 0
+        },
+        "desktopFullBleed": {
+          "type": "string",
+          "label": "Desktop fullbleed image URL",
+          "format": "uri",
+          "pattern": "^https?:\\\\\/\\\\\/.*$",
+          "maxLength": 1500,
+          "minLength": 0
+        }
+      },
+      "required": []
+    },
+    "imagePadding": {
+      "type": "boolean",
+      "label": "Should the image have padding around?"
+    },
+    "imageFit": {
+      "type": "oneOf",
+      "label": "Should the image cover its container or be contained? - (Applicable to Voy)",
+      "values": [
+        "cover",
+        "contain"
+      ],
+      "default": "cover"
+    },
+    "hasUSP": {
+      "type": "boolean",
+      "label": "Show USP list"
+    },
+    "checklist": {
+      "type": "object",
+      "label": "The USP List",
+      "required": [],
+      "properties": {
+        "checkList": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "required": [
+                "text"
+              ],
+              "properties": {
+                "icon": {
+                  "type": "iconPicker",
+                  "label": "Choose icon"
+                },
+                "text": {
+                  "type": "richtext",
+                  "label": "Item title",
+                  "maxLength": 5000,
+                  "minLength": 5
+                }
+              }
+            }
+          ],
+          "label": "The USP list",
+          "maxItems": 5,
+          "minItems": 0
+        }
+      }
+    },
+    "primaryButton": {
+      "type": "object",
+      "label": "Primary Button",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "label": "Button text",
+          "maxLength": 50,
+          "minLength": 2
+        },
+        "onClick": {
+          "type": "object",
+          "label": "Button details",
+          "required": [
+            "choice",
+            "reference",
+            "metadata"
+          ],
+          "properties": {
+            "choice": {
+              "type": "oneOf",
+              "label": "What should the button do?",
+              "values": [
+                "modal",
+                "redirect",
+                "scroll",
+                "loginForkedRedirect"
+              ]
+            },
+            "metadata": {
+              "type": "string",
+              "label": "Please add some metadata",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "reference": {
+              "type": "string",
+              "label": "What should be the button reference?",
+              "maxLength": 5000,
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "secondaryButton": {
+      "type": "object",
+      "label": "Secondary Button",
+      "required": [],
+      "properties": {
+        "text": {
+          "type": "string",
+          "label": "Button text",
+          "maxLength": 50,
+          "minLength": 2
+        },
+        "onClick": {
+          "type": "object",
+          "label": "Button details",
+          "required": [],
+          "properties": {
+            "choice": {
+              "type": "oneOf",
+              "label": "What should the button do?",
+              "values": [
+                "modal",
+                "redirect",
+                "scroll"
+              ]
+            },
+            "metadata": {
+              "type": "string",
+              "label": "Please add some metadata",
+              "maxLength": 5000,
+              "minLength": 1
+            },
+            "reference": {
+              "type": "string",
+              "label": "What should be the button reference?",
+              "maxLength": 5000,
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "buttonsAlignment": {
+      "type": "oneOf",
+      "label": "Buttons alignment (Voy - row, Manual - column)",
+      "values": [
+        "column",
+        "row"
+      ],
+      "default": "column4"
+    },
+    "hasSecondButton": {
+      "type": "boolean",
+      "label": "Show secondary button"
+    },
+    "isFullBleed": {
+      "type": "boolean",
+      "label": "Show the main image as full-bleed"
+    },
+    "backgroundColor": {
+      "type": "colorPicker",
+      "label": "Composition background color",
+      "groups": [
+        "surface"
+      ],
+      "values": [
+        "surface.neutral.light",
+        "surface.neutral.xLight",
+        "surface.medical.light",
+        "surface.emphasis.light",
+        "surface.primary.dark"
+      ]
+    },
+    "hasStatistics": {
+      "type": "boolean",
+      "label": "Show statistics section"
+    },
+    "statistics": {
+      "type": "object",
+      "label": "Statistics section - please add percentage and text",
+      "required": [],
+      "properties": {
+        "richTextData": {
+          "type": "richtext",
+          "label": "The data point (9\\\/10, 10%, No. 1)",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "text": {
+          "type": "richtext",
+          "label": "The text",
+          "maxLength": 500,
+          "minLength": 10
+        }
+      }
+    }
+  }
+}
