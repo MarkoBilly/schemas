@@ -1,0 +1,109 @@
+{
+  "type": "object",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "required": [
+    "medicalTeam"
+  ],
+  "properties": {
+    "label": {
+      "type": "string",
+      "label": "The composition label",
+      "maxLength": 500,
+      "minLength": 3
+    },
+    "title": {
+      "type": "string",
+      "label": "The composition title",
+      "maxLength": 500,
+      "minLength": 3
+    },
+    "medicalTeam": {
+      "type": "array",
+      "label": "Medical Team",
+      "items": [
+        {
+          "type": "object",
+          "required": [
+            "name",
+            "title",
+            "image",
+            "button",
+            "description"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "label": "Medical Doctor name",
+              "maxLength": 500,
+              "minLength": 5
+            },
+            "title": {
+              "type": "string",
+              "label": "Mediacl Doctor title",
+              "maxLength": 500,
+              "minLength": 5
+            },
+            "image": {
+              "type": "string",
+              "label": "Medical Doctor Image",
+              "maxLength": 1500,
+              "minLength": 3,
+              "format": "uri",
+              "pattern": "^https?:\/\/.*$"
+            },
+            "button": {
+              "type": "object",
+              "label": "CTA button",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "label": "The button label",
+                  "maxLength": 200,
+                  "minLength": 3
+                },
+                "onClick": {
+                  "type": "object",
+                  "label": "Button details",
+                  "required": [],
+                  "properties": {
+                    "choice": {
+                      "type": "oneOf",
+                      "label": "What should the button do?",
+                      "values": [
+                        "modal",
+                        "redirect",
+                        "scroll",
+                        "loginForkedRedirect"
+                      ]
+                    },
+                    "metadata": {
+                      "type": "string",
+                      "label": "Please add some metadata",
+                      "maxLength": 500,
+                      "minLength": 1
+                    },
+                    "reference": {
+                      "type": "string",
+                      "label": "What should the button reference?",
+                      "maxLength": 500,
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              "required": []
+            },
+            "description": {
+              "type": "richtext",
+              "label": "Description (Rich Text)",
+              "maxLength": 5000,
+              "minLength": 3
+            }
+          }
+        }
+      ],
+      "maxItems": 3,
+      "minItems": 3
+    }
+  }
+}
